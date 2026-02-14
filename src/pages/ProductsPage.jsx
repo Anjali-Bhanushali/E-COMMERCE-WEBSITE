@@ -53,25 +53,32 @@ const ProductsPage = () => {
   useEffect(() => {
     fetchProducts();
   }, [debouncedSearch, page, sortOrder]);
-
   return (
-    <div className="p-6 max-w-6xl  mx-auto">
-      <div className="p-6 max-w-6xl flex justify-between mx-auto">
-        <SearchBar search={search} setSearch={setSearch} />
+    <div className="p-6 max-w-6xl mx-auto">
+      {/* Search + Filter Section */}
+      <div className="flex flex-col gap-4 mb-6 sm:flex-row sm:items-center sm:justify-between">
+        {/* Search */}
+        <div className="w-full sm:w-2/3">
+          <SearchBar search={search} setSearch={setSearch} />
+        </div>
 
-        <select
-          className="my-4 border p-2 rounded"
-          onChange={(e) => setSortOrder(e.target.value)}
-        >
-          <option value="">Sort By</option>
-          <option value="asc">Price Low → High</option>
-          <option value="desc">Price High → Low</option>
-        </select>
-
-        {loading && <p>Loading...</p>}
-        {error && <p className="text-red-500">{error}</p>}
+        {/* Filter */}
+        <div className="w-full sm:w-1/3">
+          <select
+            className="w-full border border-gray-300 p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
+            onChange={(e) => setSortOrder(e.target.value)}
+          >
+            <option value="">Sort By</option>
+            <option value="asc">Price Low → High</option>
+            <option value="desc">Price High → Low</option>
+          </select>
+        </div>
       </div>
 
+      {loading && <p>Loading...</p>}
+      {error && <p className="text-red-500">{error}</p>}
+
+      {/* Products */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
