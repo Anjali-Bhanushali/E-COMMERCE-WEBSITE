@@ -5,7 +5,6 @@ import SearchBar from "@/components/ui/SearchBar";
 import Pagination from "@/components/ui/Pagination";
 import useDebounce from "@/hooks/useDebounce";
 
-
 const LIMIT = 8;
 
 const ProductsPage = () => {
@@ -56,20 +55,22 @@ const ProductsPage = () => {
   }, [debouncedSearch, page, sortOrder]);
 
   return (
-    <div className="p-6 max-w-6xl mx-auto">
-      <SearchBar search={search} setSearch={setSearch} />
+    <div className="p-6 max-w-6xl  mx-auto">
+      <div className="p-6 max-w-6xl flex justify-between mx-auto">
+        <SearchBar search={search} setSearch={setSearch} />
 
-      <select
-        className="my-4 border p-2 rounded"
-        onChange={(e) => setSortOrder(e.target.value)}
-      >
-        <option value="">Sort By</option>
-        <option value="asc">Price Low → High</option>
-        <option value="desc">Price High → Low</option>
-      </select>
+        <select
+          className="my-4 border p-2 rounded"
+          onChange={(e) => setSortOrder(e.target.value)}
+        >
+          <option value="">Sort By</option>
+          <option value="asc">Price Low → High</option>
+          <option value="desc">Price High → Low</option>
+        </select>
 
-      {loading && <p>Loading...</p>}
-      {error && <p className="text-red-500">{error}</p>}
+        {loading && <p>Loading...</p>}
+        {error && <p className="text-red-500">{error}</p>}
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {products.map((product) => (
@@ -77,12 +78,7 @@ const ProductsPage = () => {
         ))}
       </div>
 
-      <Pagination
-        total={total}
-        page={page}
-        setPage={setPage}
-        limit={LIMIT}
-      />
+      <Pagination total={total} page={page} setPage={setPage} limit={LIMIT} />
     </div>
   );
 };
