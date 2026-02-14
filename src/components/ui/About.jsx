@@ -1,7 +1,6 @@
 const About = () => {
   return (
     <div className="min-h-screen bg-gray-50">
-
       {/* Hero Section */}
       <section className="bg-black text-white py-20 text-center">
         <h1 className="text-5xl font-bold mb-4">About Us</h1>
@@ -13,7 +12,6 @@ const About = () => {
 
       {/* About Content */}
       <section className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
-
         {/* Image */}
         <div>
           <img
@@ -33,11 +31,10 @@ const About = () => {
           </p>
 
           <p className="text-gray-600">
-            With a strong technology backbone and a passion for innovation,
-            we aim to make online shopping smooth and enjoyable.
+            With a strong technology backbone and a passion for innovation, we
+            aim to make online shopping smooth and enjoyable.
           </p>
         </div>
-
       </section>
 
       {/* Mission Section */}
@@ -49,7 +46,6 @@ const About = () => {
           affordability, and trust.
         </p>
       </section>
-
     </div>
   );
 };
